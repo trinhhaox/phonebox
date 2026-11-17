@@ -1,0 +1,491 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		520E9DE2AF7E2A44470F0EAD /* www in Resources */ = {isa = PBXBuildFile; fileRef = C05551C58B1D52CB8A702580 /* www */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		512CA5B8DBD9894AA7ECBE83 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 82FF2306B51201CF0823C70A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 419FC041412E42E5B10B0EAE;
+			remoteInfo = PhoneBox;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5594FCF7FBADEB25737A213D /* PhoneBox.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = PhoneBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C1DCF61058D9458B86D3D47 /* PhoneBoxTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = PhoneBoxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C05551C58B1D52CB8A702580 /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../android/app/src/main/assets/www; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F328504D8FABAB178A5F7AF3 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 419FC041412E42E5B10B0EAE /* PhoneBox */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		540E72327269B5727FF70835 /* PhoneBoxTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+			);
+			path = PhoneBoxTests;
+			sourceTree = "<group>";
+		};
+		E6A84FC0CAE13813100D4EEF /* PhoneBox */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F328504D8FABAB178A5F7AF3 /* PBXFileSystemSynchronizedBuildFileExceptionSet */,
+			);
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+			);
+			path = PhoneBox;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXGroup section */
+		3EA209EECC21FDDC1456BE5B /* src */ = {
+			isa = PBXGroup;
+			children = (
+				9B7993C30337F86F22C69B72 /* main */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		58BF86E71998B9D691967579 /* phonebox */ = {
+			isa = PBXGroup;
+			children = (
+				DF4E5176896D29A2108F9DF8 /* android */,
+			);
+			name = phonebox;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		697B37E1EF51A54E10C9DCC3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5594FCF7FBADEB25737A213D /* PhoneBox.app */,
+				5C1DCF61058D9458B86D3D47 /* PhoneBoxTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9055EB701D08CD528E11A7E2 = {
+			isa = PBXGroup;
+			children = (
+				E6A84FC0CAE13813100D4EEF /* PhoneBox */,
+				58BF86E71998B9D691967579 /* phonebox */,
+				540E72327269B5727FF70835 /* PhoneBoxTests */,
+				697B37E1EF51A54E10C9DCC3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9B7993C30337F86F22C69B72 /* main */ = {
+			isa = PBXGroup;
+			children = (
+				F95AF4D5E05005471208DDD7 /* assets */,
+			);
+			path = main;
+			sourceTree = "<group>";
+		};
+		CA66D25408F08C46DE180381 /* app */ = {
+			isa = PBXGroup;
+			children = (
+				3EA209EECC21FDDC1456BE5B /* src */,
+			);
+			path = app;
+			sourceTree = "<group>";
+		};
+		DF4E5176896D29A2108F9DF8 /* android */ = {
+			isa = PBXGroup;
+			children = (
+				CA66D25408F08C46DE180381 /* app */,
+			);
+			path = android;
+			sourceTree = "<group>";
+		};
+		F95AF4D5E05005471208DDD7 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				C05551C58B1D52CB8A702580 /* www */,
+			);
+			path = assets;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		289CF1F55781EC392E3C5B3F /* PhoneBoxTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2B1019B4E5263D96EE838CC0 /* Build configuration list for PBXNativeTarget "PhoneBoxTests" */;
+			buildPhases = (
+				5464F2C3934BFF8C9394780F /* Sources */,
+				9B1469A61FD3B5FEC79C72EA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DF40DB60748EBA4B9CE0DCB2 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				540E72327269B5727FF70835 /* PhoneBoxTests */,
+			);
+			name = PhoneBoxTests;
+			packageProductDependencies = (
+			);
+			productName = PhoneBoxTests;
+			productReference = 5C1DCF61058D9458B86D3D47 /* PhoneBoxTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		419FC041412E42E5B10B0EAE /* PhoneBox */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4EA946517CCC458ECFCB1B1B /* Build configuration list for PBXNativeTarget "PhoneBox" */;
+			buildPhases = (
+				1CA7F70CE3B63445BBB379BF /* Sources */,
+				9A0D26F9B013908778619578 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				E6A84FC0CAE13813100D4EEF /* PhoneBox */,
+			);
+			name = PhoneBox;
+			packageProductDependencies = (
+			);
+			productName = PhoneBox;
+			productReference = 5594FCF7FBADEB25737A213D /* PhoneBox.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		82FF2306B51201CF0823C70A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					289CF1F55781EC392E3C5B3F = {
+						DevelopmentTeam = 4DU4BTV46U;
+						ProvisioningStyle = Automatic;
+					};
+					419FC041412E42E5B10B0EAE = {
+						DevelopmentTeam = 4DU4BTV46U;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 26446BD4EA0FEB0E8B8018AA /* Build configuration list for PBXProject "PhoneBox" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 9055EB701D08CD528E11A7E2;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 697B37E1EF51A54E10C9DCC3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				419FC041412E42E5B10B0EAE /* PhoneBox */,
+				289CF1F55781EC392E3C5B3F /* PhoneBoxTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9A0D26F9B013908778619578 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				520E9DE2AF7E2A44470F0EAD /* www in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B1469A61FD3B5FEC79C72EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1CA7F70CE3B63445BBB379BF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5464F2C3934BFF8C9394780F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DF40DB60748EBA4B9CE0DCB2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 419FC041412E42E5B10B0EAE /* PhoneBox */;
+			targetProxy = 512CA5B8DBD9894AA7ECBE83 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		178302E2E5A3AEC1597D9F7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 4DU4BTV46U;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PANEL_VERSION = 0.9.16;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		1EA5F67F8321C703EBEF9D4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = vn.xox.phonebox.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhoneBox.app/PhoneBox";
+			};
+			name = Release;
+		};
+		3B5D136B0EDF3BAFB8403CE2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = PhoneBox/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = vn.xox.phonebox;
+				PRODUCT_NAME = PhoneBox;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		78E64568E454EF95CA4CD3ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 4DU4BTV46U;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PANEL_VERSION = 0.9.16;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		97388E823444CF18D3D5917D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = vn.xox.phonebox.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhoneBox.app/PhoneBox";
+			};
+			name = Debug;
+		};
+		9EF6C4FA0E0B11BD0153BFAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = PhoneBox/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = vn.xox.phonebox;
+				PRODUCT_NAME = PhoneBox;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		26446BD4EA0FEB0E8B8018AA /* Build configuration list for PBXProject "PhoneBox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				178302E2E5A3AEC1597D9F7F /* Debug */,
+				78E64568E454EF95CA4CD3ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		2B1019B4E5263D96EE838CC0 /* Build configuration list for PBXNativeTarget "PhoneBoxTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				97388E823444CF18D3D5917D /* Debug */,
+				1EA5F67F8321C703EBEF9D4B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		4EA946517CCC458ECFCB1B1B /* Build configuration list for PBXNativeTarget "PhoneBox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B5D136B0EDF3BAFB8403CE2 /* Debug */,
+				9EF6C4FA0E0B11BD0153BFAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 82FF2306B51201CF0823C70A /* Project object */;
+}

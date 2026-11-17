@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key><string>en</string>
+	<key>CFBundleDisplayName</key><string>PhoneBox</string>
+	<key>CFBundleExecutable</key><string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key><string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key><string>6.0</string>
+	<key>CFBundleName</key><string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key><string>APPL</string>
+	<key>CFBundleShortVersionString</key><string>0.1.0</string>
+	<key>CFBundleVersion</key><string>1</string>
+	<key>LSRequiresIPhoneOS</key><true/>
+	<key>PhoneBoxPanelVersion</key><string>$(PANEL_VERSION)</string>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key><false/>
+	</dict>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key><string></string>
+	</dict>
+	<key>UIRequiresFullScreen</key><true/>
+	<key>UIStatusBarHidden</key><true/>
+	<key>UIViewControllerBasedStatusBarAppearance</key><false/>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsLocalNetworking</key><true/>
+	</dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key><string>vn.xox.phonebox.pair</string>
+			<key>CFBundleURLSchemes</key>
+			<array><string>phonebox</string></array>
+		</dict>
+	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>PhoneBox uses the camera only to scan the pairing QR code shown on your computer.</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>PhoneBox connects to the PhoneBox agent running on your computer on the local network.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>PhoneBox listens through the microphone only while you use the Dictation widget, to turn your speech into text for your computer.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>PhoneBox uses speech recognition only for the Dictation widget; the text is sent to your paired computer.</string>
+</dict>
+</plist>

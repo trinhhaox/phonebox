@@ -1,0 +1,54 @@
+name: PhoneBox
+options:
+  bundleIdPrefix: vn.xox
+  deploymentTarget:
+    iOS: "16.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    PANEL_VERSION: "0.9.16"
+    DEVELOPMENT_TEAM: 4DU4BTV46U
+    CODE_SIGN_STYLE: Automatic
+    TARGETED_DEVICE_FAMILY: "1"
+targets:
+  PhoneBox:
+    type: application
+    platform: iOS
+    sources:
+      - path: PhoneBox
+        type: syncedFolder
+      # Panel assets are shared with Android: folder reference, not a copy.
+      - path: ../android/app/src/main/assets/www
+        type: folder
+        buildPhase: resources
+        name: www
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: vn.xox.phonebox
+        PRODUCT_NAME: PhoneBox
+        INFOPLIST_FILE: PhoneBox/Info.plist
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        GENERATE_INFOPLIST_FILE: NO
+  PhoneBoxTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: PhoneBoxTests
+        type: syncedFolder
+    dependencies:
+      - target: PhoneBox
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: vn.xox.phonebox.tests
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_HOST: $(BUILT_PRODUCTS_DIR)/PhoneBox.app/PhoneBox
+        BUNDLE_LOADER: $(TEST_HOST)
+schemes:
+  PhoneBox:
+    build:
+      targets:
+        PhoneBox: all
+    test:
+      targets:
+        - PhoneBoxTests

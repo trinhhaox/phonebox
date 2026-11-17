@@ -50,3 +50,8 @@ tools/ui-tests/test-results/
 
 *.log
 *.txt
+# iOS (ios/)
+ios/build/
+ios/**/xcuserdata/
+*.xcuserstate
+ios/DerivedData/
