@@ -43,9 +43,10 @@ DEVELOPER_DIR=... macos/scripts/release-notarized.sh
 Builds a universal (arm64 + x86_64) Release, signs through the Xcode account's cloud-managed Developer ID and notarizes
 with `scripts/notarize-with-xcode.sh` (`xcodebuild -exportArchive` + `-exportNotarizedApp`), then writes a DMG signed
 with `Developer ID Application: Trinh Hao (4DU4BTV46U)` plus a ZIP of the app to
-`/Volumes/XcodeExternal/SharedBuild/phonebox-mac/`. The Xcode-account flow notarizes apps only, so the DMG is notarized
-and stapled with `notarytool` using the keychain profile `phonebox-notary` (override with `NOTARY_PROFILE`), created once:
-`xcrun notarytool store-credentials phonebox-notary --apple-id <apple-id> --team-id 4DU4BTV46U`. Verify:
+`/Volumes/XcodeExternal/SharedBuild/phonebox-mac/`. **Distribute `PhoneBox-<ver>-mac.zip`**: the app inside is notarized
+and stapled, so Gatekeeper accepts it on any Mac. The Xcode-account flow notarizes apps only, so the DMG is just signed;
+to notarize it too, run with `NOTARIZE_DMG=1` and a `notarytool` keychain profile (`NOTARY_PROFILE`, default
+`phonebox-notary`, created with `xcrun notarytool store-credentials`). Verify:
 `spctl -a -vvv -t exec PhoneBox.app`, `spctl -a -vvv -t open --context context:primary-signature PhoneBox-<ver>.dmg`.
 
 ## Install

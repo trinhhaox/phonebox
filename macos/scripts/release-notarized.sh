@@ -44,10 +44,13 @@ hdiutil create -quiet -volname "$APP_NAME" -srcfolder "$STAGING" -format UDZO "$
 codesign --force --timestamp --sign "$DMG_IDENTITY" "$DMG"
 # The Xcode-account flow notarizes apps only, so the DMG goes through notarytool with a keychain profile
 # (created once with: xcrun notarytool store-credentials phonebox-notary --apple-id <id> --team-id 4DU4BTV46U).
-NOTARY_PROFILE="${NOTARY_PROFILE:-phonebox-notary}"
-echo "==> Notarize DMG (profile $NOTARY_PROFILE)"
-xcrun notarytool submit "$DMG" --keychain-profile "$NOTARY_PROFILE" --wait --timeout 30m
-xcrun stapler staple "$DMG"
+# The ZIP of the stapled app is the distributed file; DMG notarization is opt-in (NOTARIZE_DMG=1).
+if [ "${NOTARIZE_DMG:-0}" = 1 ]; then
+    NOTARY_PROFILE="${NOTARY_PROFILE:-phonebox-notary}"
+    echo "==> Notarize DMG (profile $NOTARY_PROFILE)"
+    xcrun notarytool submit "$DMG" --keychain-profile "$NOTARY_PROFILE" --wait --timeout 30m
+    xcrun stapler staple "$DMG"
+fi
 ditto -c -k --keepParent "$APP" "$OUT/$APP_NAME-$VERSION-mac.zip"
 rm -rf "$OUT/$APP_NAME.app"
 ditto "$APP" "$OUT/$APP_NAME.app"
