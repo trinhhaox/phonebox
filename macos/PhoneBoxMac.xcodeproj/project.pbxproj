@@ -1,0 +1,449 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B2C1EE09BB0AC872CDFC01D7 /* setup.sh in Resources */ = {isa = PBXBuildFile; fileRef = DBDBD35AE97C35A5DF5AFD3F /* setup.sh */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F025871493002716CEC327C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA37E67B01445C3BB20F3B1D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6DC9A77B5DF5776BBD2D21E4;
+			remoteInfo = PhoneBoxMac;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		59725D811CBA6CD36E0BBA9E /* PhoneBoxMacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhoneBoxMacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4CB46E0D6F2365E775E6CA3 /* PhoneBoxMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhoneBoxMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBDBD35AE97C35A5DF5AFD3F /* setup.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = setup.sh; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		C344493B43DA48E7B2AE14C3 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 6DC9A77B5DF5776BBD2D21E4 /* PhoneBoxMac */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		2322E8A74C0F8494A9124290 /* PhoneBoxMac */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				C344493B43DA48E7B2AE14C3 /* PBXFileSystemSynchronizedBuildFileExceptionSet */,
+			);
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+			);
+			path = PhoneBoxMac;
+			sourceTree = "<group>";
+		};
+		2BA29306BE58AE803935F915 /* PhoneBoxMacTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+			);
+			path = PhoneBoxMacTests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXGroup section */
+		295319B5104C06D799E9D39F = {
+			isa = PBXGroup;
+			children = (
+				921FE6E2BFBCC40B32DE6814 /* phonebox */,
+				2322E8A74C0F8494A9124290 /* PhoneBoxMac */,
+				2BA29306BE58AE803935F915 /* PhoneBoxMacTests */,
+				3891404BF3641E43E4081ADD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3891404BF3641E43E4081ADD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4CB46E0D6F2365E775E6CA3 /* PhoneBoxMac.app */,
+				59725D811CBA6CD36E0BBA9E /* PhoneBoxMacTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		921FE6E2BFBCC40B32DE6814 /* phonebox */ = {
+			isa = PBXGroup;
+			children = (
+				DBDBD35AE97C35A5DF5AFD3F /* setup.sh */,
+			);
+			name = phonebox;
+			path = ..;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6DC9A77B5DF5776BBD2D21E4 /* PhoneBoxMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92971A1CB9722A1A021C5AA5 /* Build configuration list for PBXNativeTarget "PhoneBoxMac" */;
+			buildPhases = (
+				D20D20D2D806A512BE6BCE15 /* Sources */,
+				F62EB1BCDEC443A48420E3AF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				2322E8A74C0F8494A9124290 /* PhoneBoxMac */,
+			);
+			name = PhoneBoxMac;
+			packageProductDependencies = (
+			);
+			productName = PhoneBoxMac;
+			productReference = A4CB46E0D6F2365E775E6CA3 /* PhoneBoxMac.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8A661826A67542D2EB1DE9D8 /* PhoneBoxMacTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9F985A4EC45C0B79F6C5EF16 /* Build configuration list for PBXNativeTarget "PhoneBoxMacTests" */;
+			buildPhases = (
+				E5E02FD86DF272C39C8A41D2 /* Sources */,
+				E659FC8FF876023BE1EF8A43 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				59217E0D8100052C4B5F420E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				2BA29306BE58AE803935F915 /* PhoneBoxMacTests */,
+			);
+			name = PhoneBoxMacTests;
+			packageProductDependencies = (
+			);
+			productName = PhoneBoxMacTests;
+			productReference = 59725D811CBA6CD36E0BBA9E /* PhoneBoxMacTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA37E67B01445C3BB20F3B1D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					6DC9A77B5DF5776BBD2D21E4 = {
+						DevelopmentTeam = 4DU4BTV46U;
+						ProvisioningStyle = Automatic;
+					};
+					8A661826A67542D2EB1DE9D8 = {
+						DevelopmentTeam = 4DU4BTV46U;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = C0E28B1ABB4CA0D09E1727DC /* Build configuration list for PBXProject "PhoneBoxMac" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 295319B5104C06D799E9D39F;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 3891404BF3641E43E4081ADD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6DC9A77B5DF5776BBD2D21E4 /* PhoneBoxMac */,
+				8A661826A67542D2EB1DE9D8 /* PhoneBoxMacTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E659FC8FF876023BE1EF8A43 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F62EB1BCDEC443A48420E3AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2C1EE09BB0AC872CDFC01D7 /* setup.sh in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D20D20D2D806A512BE6BCE15 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5E02FD86DF272C39C8A41D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		59217E0D8100052C4B5F420E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6DC9A77B5DF5776BBD2D21E4 /* PhoneBoxMac */;
+			targetProxy = F025871493002716CEC327C5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3775F80FC1D96F3468D41386 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 4DU4BTV46U;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		7DF0543676F1989B61DF178F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = vn.xox.phonebox.mac.tests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhoneBox.app/Contents/MacOS/PhoneBox";
+			};
+			name = Debug;
+		};
+		7ED26D911132760CCDE5549C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PhoneBoxMac/PhoneBoxMac.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = PhoneBoxMac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = vn.xox.phonebox.mac;
+				PRODUCT_NAME = PhoneBox;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		7F32B09A91197C2448BFEFD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = vn.xox.phonebox.mac.tests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhoneBox.app/Contents/MacOS/PhoneBox";
+			};
+			name = Release;
+		};
+		813E2EA8978F7141E96D5781 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PhoneBoxMac/PhoneBoxMac.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = PhoneBoxMac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = vn.xox.phonebox.mac;
+				PRODUCT_NAME = PhoneBox;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		E8A791917671FD6A93187F53 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 4DU4BTV46U;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		92971A1CB9722A1A021C5AA5 /* Build configuration list for PBXNativeTarget "PhoneBoxMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				813E2EA8978F7141E96D5781 /* Debug */,
+				7ED26D911132760CCDE5549C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		9F985A4EC45C0B79F6C5EF16 /* Build configuration list for PBXNativeTarget "PhoneBoxMacTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7DF0543676F1989B61DF178F /* Debug */,
+				7F32B09A91197C2448BFEFD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C0E28B1ABB4CA0D09E1727DC /* Build configuration list for PBXProject "PhoneBoxMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3775F80FC1D96F3468D41386 /* Debug */,
+				E8A791917671FD6A93187F53 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AA37E67B01445C3BB20F3B1D /* Project object */;
+}

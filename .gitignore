@@ -50,8 +50,10 @@ tools/ui-tests/test-results/
 
 *.log
 *.txt
-# iOS (ios/)
+# Apple apps (ios/, macos/)
 ios/build/
-ios/**/xcuserdata/
-*.xcuserstate
 ios/DerivedData/
+macos/build/
+macos/DerivedData/
+**/xcuserdata/
+*.xcuserstate
