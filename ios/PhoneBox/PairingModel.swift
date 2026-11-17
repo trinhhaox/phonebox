@@ -31,7 +31,11 @@ final class PairingModel: ObservableObject {
         if computers.active == nil { showMenu = true }
     }
 
-    func refresh() async { computers = await link.computers }
+    /// Reloads the list and tells the panel bridge so its `pcs()` snapshot follows pairing changes.
+    func refresh() async {
+        computers = await link.computers
+        NotificationCenter.default.post(name: .phoneBoxComputersChanged, object: nil)
+    }
 
     /// A scanned QR text. Returns true when it is a pairing link, so the scanner can stop.
     func offer(text: String) -> Bool {

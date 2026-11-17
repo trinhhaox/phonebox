@@ -24,7 +24,6 @@ final class PanelBridgeIntegrationTests: XCTestCase, WKNavigationDelegate {
                                   orientation: OrientationController(), dictation: SpeechDictation(engine: SpeechRecognizerEngine()))
         let config = WKWebViewConfiguration()
         config.setURLSchemeHandler(PanelSchemeHandler(proxy: OfflineAgentProxy()), forURLScheme: PanelSchemeHandler.scheme)
-        config.userContentController.add(WeakScriptHandler(bridge), name: NativeBridge.handlerName)
         bridge.install(into: config.userContentController)
         let webView = WKWebView(frame: CGRect(x: 0, y: 0, width: 844, height: 390), configuration: config)
         webView.navigationDelegate = self
