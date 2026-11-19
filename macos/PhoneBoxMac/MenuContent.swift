@@ -19,17 +19,44 @@ struct MenuContent: View {
             .keyboardShortcut(",").disabled(!installed)
         Button("Ghép đôi điện thoại qua Wi-Fi…") { windows.showSettings(pairing: true) }.disabled(!installed)
         Divider()
-        Button(monitor.restarting ? "Đang khởi động lại…" : "Khởi động lại PhoneBox") { monitor.restart() }
-            .disabled(!installed || monitor.restarting)
-            .help("Chạy launchctl kickstart -k cho tác vụ \(AgentInstallation.launchdLabel)")
+        if installed {
+            if monitor.status == .stopped {
+                Button(monitor.pendingAction == .starting ? "Đang khởi động agent…" : "Khởi động PhoneBox agent") {
+                    monitor.startAgent()
+                }
+                .disabled(monitor.isBusy)
+                .help("Khởi động tác vụ nền \(AgentInstallation.launchdLabel)")
+            } else {
+                Button(monitor.pendingAction == .restarting ? "Đang khởi động lại…" : "Khởi động lại agent") {
+                    monitor.restart()
+                }
+                .disabled(monitor.isBusy)
+                .help("Chạy launchctl kickstart -k cho tác vụ \(AgentInstallation.launchdLabel)")
+
+                Button(monitor.pendingAction == .stopping ? "Đang dừng agent…" : "Dừng agent") {
+                    monitor.stop()
+                }
+                .disabled(monitor.isBusy)
+                .help("Dừng tác vụ nền \(AgentInstallation.launchdLabel) bằng launchctl bootout")
+            }
+        }
         Toggle("Mở khi đăng nhập", isOn: Binding(get: { launchAtLogin.isEnabled }, set: { launchAtLogin.setEnabled($0) }))
             .help("Chỉ áp dụng cho ứng dụng menu này; agent tự chạy theo launchd")
         if let message = launchAtLogin.errorMessage { Text(message) }
         Divider()
-        Text("Thoát chỉ đóng ứng dụng menu, agent vẫn chạy nền")
-        Button("Thoát") { NSApp.terminate(nil) }
+        if installed {
+            Button("Chỉ thoát ứng dụng menu") { NSApp.terminate(nil) }
+                .help("Đóng biểu tượng menu này; PhoneBox agent vẫn tiếp tục chạy nền")
+            Button(monitor.pendingAction == .quitting ? "Đang tắt PhoneBox…" : "Tắt hẳn PhoneBox") {
+                monitor.quitCompletely(windows: windows)
+            }
             .keyboardShortcut("q")
-            .help("Chỉ thoát ứng dụng menu này; agent PhoneBox vẫn tiếp tục chạy")
+            .disabled(monitor.isBusy)
+            .help("Dừng hẳn PhoneBox agent chạy nền và thoát hoàn toàn ứng dụng")
+        } else {
+            Button("Thoát PhoneBox") { NSApp.terminate(nil) }
+                .keyboardShortcut("q")
+        }
     }
 
     @ViewBuilder private var statusSection: some View {
@@ -41,7 +68,7 @@ struct MenuContent: View {
             Text("Hãy chạy setup.sh trong thư mục dự án, hoặc cài ngay bên dưới")
             Button("Cài đặt PhoneBox agent…") { windows.showInstaller { monitor.refresh() } }
         case .stopped:
-            Text("Agent không chạy")
+            Text("Agent đã dừng")
             if let error = monitor.lastError { Text(error) }
         case let .running(info):
             Text("PhoneBox agent \(info.version) đang chạy")

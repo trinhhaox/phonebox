@@ -1,3 +1,4 @@
+import AppKit
 import Foundation
 
 enum AgentStatus: Equatable {
@@ -10,10 +11,20 @@ enum AgentStatus: Equatable {
 /// Polls the local agent at a low rate (and on demand) and publishes what the menu shows.
 @MainActor
 final class AgentMonitor: ObservableObject {
+    enum PendingAction: Equatable {
+        case starting
+        case restarting
+        case stopping
+        case quitting
+    }
+
     @Published private(set) var status: AgentStatus = .checking
     @Published private(set) var phones: [PhoneRecord] = []
-    @Published private(set) var restarting = false
+    @Published private(set) var pendingAction: PendingAction?
     @Published private(set) var lastError: String?
+
+    var isBusy: Bool { pendingAction != nil }
+    var restarting: Bool { pendingAction == .restarting }
 
     private let installation: AgentInstallation
     private let session: URLSession
@@ -30,11 +41,28 @@ final class AgentMonitor: ObservableObject {
         session = URLSession(configuration: config)
     }
 
-    func start() {
+    func start(autoBootstrap: Bool = false) {
         guard timer == nil else { return }
         refresh()
         timer = Timer.scheduledTimer(withTimeInterval: Self.pollInterval, repeats: true) { [weak self] _ in
             Task { @MainActor in self?.refresh() }
+        }
+        if autoBootstrap && installation.isInstalled() {
+            Task { [weak self] in
+                guard let self else { return }
+                guard await !AgentControl.isServiceLoaded() else { return }
+                guard self.timer != nil, self.pendingAction == nil else { return }
+                self.pendingAction = .starting
+                self.lastError = nil
+                do {
+                    try await AgentControl.startAgent(plist: self.installation.launchAgentPlist)
+                    try? await Task.sleep(nanoseconds: 2_500_000_000)
+                } catch {
+                    self.lastError = error.localizedDescription
+                }
+                self.pendingAction = nil
+                self.refresh()
+            }
         }
     }
 
@@ -43,16 +71,94 @@ final class AgentMonitor: ObservableObject {
         refreshTask = Task { [weak self] in await self?.poll() }
     }
 
-    func restart() {
-        guard !restarting else { return }
-        restarting = true
+    func startAgent() {
+        guard pendingAction == nil else { return }
+        pendingAction = .starting
         lastError = nil
         Task { [weak self] in
-            do { try await AgentControl.restartAgent() } catch { self?.lastError = error.localizedDescription }
-            // the agent needs a few seconds to come back; poll again shortly after
-            try? await Task.sleep(nanoseconds: 4_000_000_000)
-            self?.restarting = false
-            self?.refresh()
+            guard let self else { return }
+            do {
+                try await AgentControl.startAgent(plist: self.installation.launchAgentPlist)
+                try? await Task.sleep(nanoseconds: 2_500_000_000)
+            } catch {
+                self.lastError = error.localizedDescription
+            }
+            self.pendingAction = nil
+            self.refresh()
+        }
+    }
+
+    func restart() {
+        guard pendingAction == nil else { return }
+        pendingAction = .restarting
+        lastError = nil
+        Task { [weak self] in
+            guard let self else { return }
+            do {
+                try await AgentControl.restartAgent(plist: self.installation.launchAgentPlist)
+                // the agent needs a few seconds to come back; poll again shortly after
+                try? await Task.sleep(nanoseconds: 4_000_000_000)
+            } catch {
+                self.lastError = error.localizedDescription
+            }
+            self.pendingAction = nil
+            self.refresh()
+        }
+    }
+
+    func stop() {
+        guard pendingAction == nil else { return }
+        pendingAction = .stopping
+        lastError = nil
+        Task { [weak self] in
+            guard let self else { return }
+            do {
+                try await AgentControl.stopAgent()
+                self.status = .stopped
+                self.phones = []
+            } catch {
+                self.lastError = error.localizedDescription
+            }
+            self.pendingAction = nil
+            self.refresh()
+        }
+    }
+
+    func quitCompletely(windows: WindowCoordinator, terminate: @escaping () -> Void = { NSApp.terminate(nil) }) {
+        guard pendingAction == nil else { return }
+        pendingAction = .quitting
+        lastError = nil
+        timer?.invalidate()
+        timer = nil
+        refreshTask?.cancel()
+        refreshTask = nil
+        windows.closeAll()
+        Task { [weak self] in
+            guard let self else { return }
+            do {
+                if self.installation.isInstalled() {
+                    try await AgentControl.stopAgent()
+                }
+                terminate()
+            } catch {
+                self.lastError = error.localizedDescription
+                self.pendingAction = nil
+                self.start(autoBootstrap: false)
+                Self.presentQuitFailureAlert(message: error.localizedDescription, terminate: terminate)
+            }
+        }
+    }
+
+    private static func presentQuitFailureAlert(message: String, terminate: () -> Void) {
+        let alert = NSAlert()
+        alert.alertStyle = .warning
+        alert.messageText = "Không thể tắt hẳn PhoneBox agent"
+        alert.informativeText = message
+        alert.addButton(withTitle: "Chỉ thoát ứng dụng menu")
+        alert.addButton(withTitle: "Đóng")
+        NSApp.activate(ignoringOtherApps: true)
+        if alert.runModal() == .alertFirstButtonReturn {
+            terminate()
         }
     }
 

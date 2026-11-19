@@ -9,13 +9,14 @@ final class AppServices {
     let preferences = PanelPreferences()
     let windows: WindowCoordinator
 
-    private init() { windows = WindowCoordinator(preferences: preferences) }
+    private init() { windows = WindowCoordinator(preferences: preferences, monitor: monitor) }
 }
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         MainActor.assumeIsolated {
-            AppServices.shared.monitor.start()
+            let isRunningTests = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
+            AppServices.shared.monitor.start(autoBootstrap: !isRunningTests)
             // `open PhoneBox.app --args --show-panel` opens the panel straight away (scripting and screenshots).
             if CommandLine.arguments.contains("--show-panel") { AppServices.shared.windows.showPanel() }
         }

@@ -2,7 +2,7 @@ import AppKit
 import Combine
 import SwiftUI
 
-/// Creates and tracks the two app windows. A window's web view is torn down when the window closes,
+/// Creates and tracks the app windows. A window's web view is torn down when the window closes,
 /// so a closed panel does not keep streaming in the background.
 @MainActor
 final class WindowCoordinator: NSObject, NSWindowDelegate {
@@ -12,6 +12,7 @@ final class WindowCoordinator: NSObject, NSWindowDelegate {
     static let settingsDefaultSize = NSSize(width: 1000, height: 720)
 
     let preferences: PanelPreferences
+    let monitor: AgentMonitor
     private var panelWindow: NSWindow?
     private var panelModel: SecureWebViewModel?
     private var settingsWindow: NSWindow?
@@ -20,8 +21,9 @@ final class WindowCoordinator: NSObject, NSWindowDelegate {
     private var installerModel: InstallerModel?
     private var preferenceSubscriptions = Set<AnyCancellable>()
 
-    init(preferences: PanelPreferences) {
+    init(preferences: PanelPreferences, monitor: AgentMonitor) {
         self.preferences = preferences
+        self.monitor = monitor
         super.init()
     }
 
@@ -51,7 +53,11 @@ final class WindowCoordinator: NSObject, NSWindowDelegate {
             return
         }
         let model = SecureWebViewModel(url: AgentEndpoint.settingsURL)
-        let window = makeWindow(title: "Cài đặt PhoneBox", content: NSHostingController(rootView: SecureWebView(model: model)),
+        let rootView = SettingsRootView(model: model, monitor: monitor) { [weak self] in
+            guard let self else { return }
+            self.monitor.quitCompletely(windows: self)
+        }
+        let window = makeWindow(title: "Cài đặt PhoneBox", content: NSHostingController(rootView: rootView),
                                 size: Self.settingsDefaultSize, autosave: Self.settingsAutosaveName,
                                 minSize: NSSize(width: 640, height: 420))
         settingsModel = model
@@ -71,6 +77,12 @@ final class WindowCoordinator: NSObject, NSWindowDelegate {
         installerWindow = window
         bringToFront(window)
         model.start()
+    }
+
+    func closeAll() {
+        panelWindow?.close()
+        settingsWindow?.close()
+        installerWindow?.close()
     }
 
     func windowWillClose(_ notification: Notification) {

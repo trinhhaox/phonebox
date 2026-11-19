@@ -5,12 +5,15 @@ Bundle id `vn.xox.phonebox.mac`, team `4DU4BTV46U`, macOS 14+. UI is Vietnamese.
 
 ## What it does
 - Menu: agent status (polled every 8 s), connected phones (USB / Wi-Fi), open panel, settings, Wi-Fi pairing,
-  restart agent (`launchctl kickstart -k gui/<uid>/net.oxog.phonebox.agent`), launch at login (this app only), quit
-  (quits the menu app only; the agent keeps running under launchd).
+  start/restart/stop agent (`launchctl kickstart -k` with `launchctl bootstrap` fallback when unloaded, and
+  `launchctl bootout` to stop), launch at login (this app only), quit menu app only ("Chỉ thoát ứng dụng menu"), or
+  quit completely ("Tắt hẳn PhoneBox", stops the background agent and exits). Reopening the app automatically
+  bootstraps an unloaded agent.
 - Panel window: `http://127.0.0.1:8765/panel/` in a WKWebView, "always on top", opacity slider (30-100 %), size and
   position remembered (`PhoneBoxPanelWindow`). Default 900x420.
-- Settings window: `http://127.0.0.1:8765/` (the agent's settings page). "Pair a phone over Wi-Fi" opens it and
-  clicks the page's pairing button (the page has no deep link for the dialog).
+- Settings window: `http://127.0.0.1:8765/` (the agent's settings page) with native toolbar (`Tải lại`,
+  `Khởi động lại agent` / `Khởi động agent`, `Tắt hẳn`). "Pair a phone over Wi-Fi" opens it and clicks the page's
+  pairing button (the page has no deep link for the dialog).
 - Agent missing (binary or launchd plist absent): the menu says so and offers "Cài đặt PhoneBox agent…", which runs the
   bundled `setup.sh --yes --no-phone` as you (never sudo) and streams the log. setup.sh downloads the release from
   GitHub and verifies its SHA-256 itself. Packages that need sudo (e.g. Homebrew installs) cannot prompt from the app;

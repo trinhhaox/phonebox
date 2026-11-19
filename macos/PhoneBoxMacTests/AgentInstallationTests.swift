@@ -40,5 +40,21 @@ final class AgentInstallationTests: XCTestCase {
 
     func testKickstartUsesArrayArguments() {
         XCTAssertEqual(AgentControl.kickstartArguments(uid: 501), ["kickstart", "-k", "gui/501/net.oxog.phonebox.agent"])
+        XCTAssertEqual(AgentControl.kickstartArguments(uid: 501, killRunning: false), ["kickstart", "gui/501/net.oxog.phonebox.agent"])
+    }
+
+    func testLaunchdLifecycleArgumentsUseArrayArguments() {
+        XCTAssertEqual(AgentControl.bootoutArguments(uid: 501), ["bootout", "gui/501/net.oxog.phonebox.agent"])
+        let spacedPlist = "/Users/my user/Library/LaunchAgents/net.oxog.phonebox.agent.plist"
+        XCTAssertEqual(AgentControl.bootstrapArguments(uid: 501, plistPath: spacedPlist), ["bootstrap", "gui/501", spacedPlist])
+        XCTAssertEqual(AgentControl.printArguments(uid: 501), ["print", "gui/501/net.oxog.phonebox.agent"])
+    }
+
+    func testIsNotLoadedStatus() {
+        XCTAssertTrue(AgentControl.isNotLoadedStatus(3))
+        XCTAssertTrue(AgentControl.isNotLoadedStatus(113))
+        XCTAssertFalse(AgentControl.isNotLoadedStatus(0))
+        XCTAssertFalse(AgentControl.isNotLoadedStatus(1))
+        XCTAssertFalse(AgentControl.isNotLoadedStatus(5))
     }
 }
