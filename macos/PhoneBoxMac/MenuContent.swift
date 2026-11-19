@@ -6,6 +6,7 @@ struct MenuContent: View {
     @ObservedObject var monitor: AgentMonitor
     @ObservedObject var launchAtLogin: LaunchAtLogin
     @ObservedObject var preferences: PanelPreferences
+    @ObservedObject var updater: AppUpdater
     let windows: WindowCoordinator
 
     private var installed: Bool { monitor.status != .notInstalled }
@@ -44,6 +45,10 @@ struct MenuContent: View {
             .help("Chỉ áp dụng cho ứng dụng menu này; agent tự chạy theo launchd")
         if let message = launchAtLogin.errorMessage { Text(message) }
         Divider()
+        Toggle("Tự động cập nhật", isOn: $updater.autoUpdateEnabled)
+            .help("Tự động tải, xác minh chữ ký và cập nhật ứng dụng Mac khi có bản mới")
+        updateSection
+        Divider()
         if installed {
             Button("Chỉ thoát ứng dụng menu") { NSApp.terminate(nil) }
                 .help("Đóng biểu tượng menu này; PhoneBox agent vẫn tiếp tục chạy nền")
@@ -56,6 +61,34 @@ struct MenuContent: View {
         } else {
             Button("Thoát PhoneBox") { NSApp.terminate(nil) }
                 .keyboardShortcut("q")
+        }
+    }
+
+    @ViewBuilder private var updateSection: some View {
+        switch updater.state {
+        case .idle:
+            Button("Kiểm tra cập nhật…") { updater.checkNow(userInitiated: true) }
+        case .checking:
+            Button("Đang kiểm tra cập nhật…") {}.disabled(true)
+        case .upToDate:
+            Button("Đã là bản mới nhất (v\(updater.currentVersion)) — Kiểm tra lại") {
+                updater.checkNow(userInitiated: true)
+            }
+        case let .available(rel):
+            Button(updater.canInstallInPlace ? "Cập nhật lên v\(rel.version)…" : "Tải bản mới v\(rel.version)…") {
+                updater.installAvailable()
+            }
+        case let .downloading(rel):
+            Button("Đang tải bản v\(rel.version)…") {}.disabled(true)
+        case let .verifying(rel):
+            Button("Đang xác minh bản v\(rel.version)…") {}.disabled(true)
+        case let .readyToInstall(rel, _, _):
+            Button("Khởi động lại để cập nhật v\(rel.version)") { updater.applyStagedUpdate() }
+        case let .installing(rel):
+            Button("Đang cài đặt v\(rel.version)…") {}.disabled(true)
+        case let .failed(message):
+            Text("Lỗi cập nhật: \(message)")
+            Button("Thử kiểm tra cập nhật lại") { updater.checkNow(userInitiated: true) }
         }
     }
 

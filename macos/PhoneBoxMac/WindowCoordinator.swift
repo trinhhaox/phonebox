@@ -13,6 +13,9 @@ final class WindowCoordinator: NSObject, NSWindowDelegate {
 
     let preferences: PanelPreferences
     let monitor: AgentMonitor
+    let updater: AppUpdater
+    var onAllWindowsClosed: (() -> Void)?
+
     private var panelWindow: NSWindow?
     private var panelModel: SecureWebViewModel?
     private var settingsWindow: NSWindow?
@@ -21,9 +24,14 @@ final class WindowCoordinator: NSObject, NSWindowDelegate {
     private var installerModel: InstallerModel?
     private var preferenceSubscriptions = Set<AnyCancellable>()
 
-    init(preferences: PanelPreferences, monitor: AgentMonitor) {
+    var hasOpenWindow: Bool {
+        panelWindow != nil || settingsWindow != nil || installerWindow != nil
+    }
+
+    init(preferences: PanelPreferences, monitor: AgentMonitor, updater: AppUpdater) {
         self.preferences = preferences
         self.monitor = monitor
+        self.updater = updater
         super.init()
     }
 
@@ -53,7 +61,7 @@ final class WindowCoordinator: NSObject, NSWindowDelegate {
             return
         }
         let model = SecureWebViewModel(url: AgentEndpoint.settingsURL)
-        let rootView = SettingsRootView(model: model, monitor: monitor) { [weak self] in
+        let rootView = SettingsRootView(model: model, monitor: monitor, updater: updater) { [weak self] in
             guard let self else { return }
             self.monitor.quitCompletely(windows: self)
         }
@@ -98,6 +106,9 @@ final class WindowCoordinator: NSObject, NSWindowDelegate {
         } else if window === settingsWindow {
             settingsWindow = nil
             settingsModel = nil
+        }
+        if !hasOpenWindow {
+            onAllWindowsClosed?()
         }
     }
 

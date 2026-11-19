@@ -18,10 +18,17 @@ Bundle id `vn.xox.phonebox.mac`, team `4DU4BTV46U`, macOS 14+. UI is Vietnamese.
   bundled `setup.sh --yes --no-phone` as you (never sudo) and streams the log. setup.sh downloads the release from
   GitHub and verifies its SHA-256 itself. Packages that need sudo (e.g. Homebrew installs) cannot prompt from the app;
   in that case run setup.sh from Terminal once.
+- Self-update: polls GitHub Releases (`trinhhaox/phonebox`, tags `apps-v*`) 15 s after launch and every 6 h (toggleable
+  with "Tự động cập nhật", plus manual "Kiểm tra cập nhật…" and a settings-window banner). Downloads `PhoneBox-<ver>-mac.zip`
+  and `SHA256SUMS.txt`, swaps the `.app` atomically with rollback on failure, and relaunches `PhoneBox.app` without
+  stopping `PhoneBoxAgent`.
 
 ## Security
 - Web views only load `http://127.0.0.1:8765` (exact scheme/host/port, no userinfo). Other http(s)/mailto links open in the
   default browser; every other scheme is blocked. Non-persistent web data store.
+- Auto-update enforces HTTPS against a GitHub host allow-list (including a pinned redirect delegate), verifies the
+  downloaded ZIP's SHA-256 against `SHA256SUMS.txt` via CryptoKit, and verifies `codesign --verify --deep --strict`
+  against Bundle ID `vn.xox.phonebox.mac` and Team ID `4DU4BTV46U` before swapping the bundle.
 - ATS exception only for `127.0.0.1` and `localhost`.
 - The panel identifies as a browser: it sends no `X-PhoneBox-Device` header, so the agent does not list the Mac as a phone.
   The agent also only accepts Host `127.0.0.1`/`localhost` and Origin `http://127.0.0.1:8765`, which matches.

@@ -7,9 +7,16 @@ final class AppServices {
     let monitor = AgentMonitor()
     let launchAtLogin = LaunchAtLogin()
     let preferences = PanelPreferences()
+    let updater = AppUpdater()
     let windows: WindowCoordinator
 
-    private init() { windows = WindowCoordinator(preferences: preferences, monitor: monitor) }
+    private init() {
+        windows = WindowCoordinator(preferences: preferences, monitor: monitor, updater: updater)
+        windows.onAllWindowsClosed = { [weak updater, weak monitor] in
+            guard monitor?.pendingAction != .quitting else { return }
+            updater?.handleAllWindowsClosed()
+        }
+    }
 }
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
@@ -17,6 +24,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         MainActor.assumeIsolated {
             let isRunningTests = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
             AppServices.shared.monitor.start(autoBootstrap: !isRunningTests)
+            AppServices.shared.updater.start(
+                enabled: !isRunningTests,
+                hasOpenWindows: { AppServices.shared.windows.hasOpenWindow }
+            )
             // `open PhoneBox.app --args --show-panel` opens the panel straight away (scripting and screenshots).
             if CommandLine.arguments.contains("--show-panel") { AppServices.shared.windows.showPanel() }
         }
@@ -30,8 +41,13 @@ struct PhoneBoxMacApp: App {
 
     var body: some Scene {
         MenuBarExtra {
-            MenuContent(monitor: monitor, launchAtLogin: AppServices.shared.launchAtLogin,
-                        preferences: AppServices.shared.preferences, windows: AppServices.shared.windows)
+            MenuContent(
+                monitor: monitor,
+                launchAtLogin: AppServices.shared.launchAtLogin,
+                preferences: AppServices.shared.preferences,
+                updater: AppServices.shared.updater,
+                windows: AppServices.shared.windows
+            )
         } label: {
             Image(systemName: symbol)
         }
